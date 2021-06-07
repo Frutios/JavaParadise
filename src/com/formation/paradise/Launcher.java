@@ -75,8 +75,8 @@ public class Launcher {
         } else if (choice == 5){
             List<Trip> trips = jtd.findAll();
             for (Trip t : trips){
-                System.out.println(t.getId() + " - Trip from " + t.getDeparture()
-                        + " to " + t.getDestination() + " a the cost of " + t.getPrice() + "$");
+                System.out.println(t.getId() + " - Trip from " + t.getDeparture().getName()
+                        + " to " + t.getDestination().getName() + " a the cost of " + t.getPrice() + "$");
             }
 
         } else if (choice == 6){
@@ -101,7 +101,7 @@ public class Launcher {
             Long id = sc.nextLong();
             Trip findById = jtd.findById(id);
             System.out.println("The trip with the id " + findById.getId() + " is "
-                    + findById.getDeparture() + " - " + findById.getDestination());
+                    + findById.getDeparture().getName() + " - " + findById.getDestination().getName());
 
         } else if (choice == 8){
             System.out.println("Change the price, choose the id of the trip");
