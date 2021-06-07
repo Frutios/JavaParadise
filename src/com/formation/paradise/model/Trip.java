@@ -1,6 +1,8 @@
 package com.formation.paradise.model;
 
-public class Trip {
+import java.io.Serializable;
+
+public class Trip implements Serializable {
 
     private Long id;
     private Place departure;
@@ -9,6 +11,12 @@ public class Trip {
 
     public Trip(Long id, Place departure, Place destination, float price) {
         this.id = id;
+        this.departure = departure;
+        this.destination = destination;
+        this.price = price;
+    }
+
+    public Trip(Place departure, Place destination, float price) {
         this.departure = departure;
         this.destination = destination;
         this.price = price;
@@ -43,7 +51,7 @@ public class Trip {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 }

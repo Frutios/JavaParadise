@@ -110,7 +110,22 @@ public class JdbcTripDao extends JdbcDao implements CrudDao<Long, Trip> {
     }
 
     @Override
-    public boolean delete(Long aLong) {
-        return false;
+    public boolean delete(Long id) {
+        boolean isDeleted = false;
+        String query = "DELETE FROM trip WHERE id=?";
+        getConnection();
+        try (PreparedStatement pst = getConnection().prepareStatement(query)){
+            pst.setLong(1, id);
+            isDeleted = pst.execute();
+            connection.commit();
+        } catch (SQLException e1){
+            e1.printStackTrace();
+            try {
+                connection.rollback();
+            } catch (SQLException e2){
+                e2.printStackTrace();
+            }
+        }
+        return isDeleted;
     }
 }
